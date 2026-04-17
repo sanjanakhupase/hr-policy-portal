@@ -23,9 +23,20 @@
 
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<!-- Netlify Identity -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script src="app.js"></script>
+
+<script>
+// protect page
+const user = netlifyIdentity.currentUser();
+
+netlifyIdentity.on("init", user => {
+  if (!user) {
+    window.location.href = "index.html";
+  }
+});
+</script>
 
 </body>
 </html>
