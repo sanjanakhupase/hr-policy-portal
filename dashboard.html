@@ -29,7 +29,8 @@
 
 <script>
 // protect page
-const user = netlifyIdentity.currentUser();
+const netlifyIdentity = window.netlifyIdentity;
+netlifyIdentity.init();
 
 netlifyIdentity.on("init", user => {
   if (!user) {
