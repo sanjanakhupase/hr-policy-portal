@@ -3,7 +3,7 @@ netlifyIdentity.init();
 
 // open login/signup
 function openLogin() {
-  netlifyIdentity.open("login");
+   window.location.href = "dashboard.html";
 }
 
 function openSignup() {
