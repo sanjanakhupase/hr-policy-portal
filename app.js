@@ -1,6 +1,13 @@
 const netlifyIdentity = window.netlifyIdentity;
 netlifyIdentity.init();
 
+
+function openPolicy(type) {
+  if (type === "leave") {
+    window.location = "leave-policy.html";
+  }
+}
+
 // open login/signup
 function openLogin() {
    window.location.href = "dashboard.html";
