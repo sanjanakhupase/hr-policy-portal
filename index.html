@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HR Policy Portal Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+<div class="login-container">
+
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" />
+    <h2>HR Policy Portal</h2>
+  </div>
+
+  <input id="email" type="email" placeholder="Enter Official Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+  <button class="secondary" onclick="signup()">Create Account</button>
+
+  <p class="note">Only @indorama.com emails allowed</p>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
