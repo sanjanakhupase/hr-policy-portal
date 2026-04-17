@@ -14,11 +14,8 @@
     <h2>HR Policy Portal</h2>
   </div>
 
-  <input id="email" type="email" placeholder="Enter Official Email">
-  <input id="password" type="password" placeholder="Password">
-
-  <button onclick="login()">Login</button>
-  <button class="secondary" onclick="signup()">Create Account</button>
+  <button onclick="openLogin()">Login</button>
+  <button class="secondary" onclick="openSignup()">Create Account</button>
 
   <p class="note">Only @indorama.com emails allowed</p>
 
@@ -26,7 +23,6 @@
 
 <!-- Netlify Identity -->
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
 <script src="app.js"></script>
 
 </body>
