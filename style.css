@@ -43,7 +43,16 @@ button {
   color: white;
   cursor: pointer;
 }
-
+dashboard-button {
+  width : auto;
+  padding :5px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
 button.secondary {
   background: gray;
 }
