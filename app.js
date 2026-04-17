@@ -1,45 +1,50 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyDCwQghaeC4YWVFXctmBo283ir3vV_m4ko",
-  authDomain: "hr-policy-portal.firebaseapp.com",
-  projectId: "hr-policy-portal"
-};
+// Initialize Netlify Identity
+const netlifyIdentity = window.netlifyIdentity;
+netlifyIdentity.init();
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
-// restrict domain
+// allow only indorama emails
 function allowed(email) {
-  return email.endsWith("@indorama.com");
+  return email && email.endsWith("@indorama.com");
 }
 
 function login() {
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   if (!allowed(email)) {
-    alert("Only official emails allowed");
+    alert("Only official @indorama.com emails allowed");
     return;
   }
 
-  auth.signInWithEmailAndPassword(email, pass)
-    .then(() => window.location = "dashboard.html")
-    .catch(e => alert(e.message));
+  netlifyIdentity.open("login");
 }
 
 function signup() {
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   if (!allowed(email)) {
-    alert("Only official emails allowed");
+    alert("Only official @indorama.com emails allowed");
     return;
   }
 
-  auth.createUserWithEmailAndPassword(email, pass)
-    .then(() => window.location = "dashboard.html")
-    .catch(e => alert(e.message));
+  netlifyIdentity.open("signup");
 }
 
+// handle login success
+netlifyIdentity.on("login", user => {
+  if (!allowed(user.email)) {
+    alert("Access denied");
+    netlifyIdentity.logout();
+    return;
+  }
+
+  netlifyIdentity.close();
+  window.location.href = "dashboard.html";
+});
+
+// logout function
 function logout() {
-  auth.signOut().then(() => window.location = "index.html");
+  netlifyIdentity.logout();
+  window.location.href = "index.html";
 }
