@@ -43,9 +43,9 @@ button {
   color: white;
   cursor: pointer;
 }
-dashboard-button {
+.dashboard-button {
   width : auto;
-  padding :5px;
+  padding :10px;
   margin-top: 10px;
   border: none;
   border-radius: 8px;
