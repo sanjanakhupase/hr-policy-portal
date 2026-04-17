@@ -1,40 +1,19 @@
-// Initialize Netlify Identity
 const netlifyIdentity = window.netlifyIdentity;
 netlifyIdentity.init();
 
-// allow only indorama emails
-function allowed(email) {
-  return email && email.endsWith("@indorama.com");
-}
-
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  if (!allowed(email)) {
-    alert("Only official @indorama.com emails allowed");
-    return;
-  }
-
+// open login/signup
+function openLogin() {
   netlifyIdentity.open("login");
 }
 
-function signup() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  if (!allowed(email)) {
-    alert("Only official @indorama.com emails allowed");
-    return;
-  }
-
+function openSignup() {
   netlifyIdentity.open("signup");
 }
 
-// handle login success
+// after login
 netlifyIdentity.on("login", user => {
-  if (!allowed(user.email)) {
-    alert("Access denied");
+  if (!user.email.endsWith("@indorama.com")) {
+    alert("Access denied: Only Indorama employees allowed");
     netlifyIdentity.logout();
     return;
   }
@@ -43,7 +22,7 @@ netlifyIdentity.on("login", user => {
   window.location.href = "dashboard.html";
 });
 
-// logout function
+// logout
 function logout() {
   netlifyIdentity.logout();
   window.location.href = "index.html";
